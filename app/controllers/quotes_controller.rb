@@ -11,7 +11,7 @@ class QuotesController < ApplicationController
   # GET /quotes/1
   def show
     quote = Quote.find(params[:id])
-    render(json: { quote: quote })
+    render(json: quote.to_json(include: :user))
   end
 
   # POST /quotes
