@@ -870,3 +870,135 @@ Processing by QuotesController#index as HTML
 Completed 200 OK in 120ms (Views: 0.3ms | ActiveRecord: 23.8ms | Allocations: 13425)
 
 
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE DATABASE "insta_inspire_app_api_development" ENCODING = 'unicode'[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE DATABASE "insta_inspire_app_api_test" ENCODING = 'unicode'[0m
+  [1m[35m (198.3ms)[0m  [1m[35mCREATE DATABASE "insta_inspire_app_api_development" ENCODING = 'unicode'[0m
+  [1m[35m (73.8ms)[0m  [1m[35mCREATE DATABASE "insta_inspire_app_api_test" ENCODING = 'unicode'[0m
+  [1m[35m (6.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (3.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1508022198120813375)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20210120034750)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (5.7ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "name" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210120034750"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateQuotes (20210120034843)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.7ms)[0m  [1m[35mCREATE TABLE "quotes" ("id" bigserial primary key, "text" character varying, "mode" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210120034843"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddForeignKeyToQuotes (20210120034955)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "quotes" ADD "user_id" integer[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210120034955"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddFieldMoodToQuotes (20210120040513)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "quotes" ADD "mood" character varying[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210120040513"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to RemoveFeildModeFromQuotes (20210120040540)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "quotes" DROP COLUMN "mode"[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210120040540"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.7ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-01-20 22:52:22.658289"], ["updated_at", "2021-01-20 22:52:22.658289"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(1508022198120813375)[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (2.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "mekahay"], ["created_at", "2021-01-20 23:14:01.081777"], ["updated_at", "2021-01-20 23:14:01.081777"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "MCK651"], ["created_at", "2021-01-20 23:14:01.087180"], ["updated_at", "2021-01-20 23:14:01.087180"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "RocketGirlz"], ["created_at", "2021-01-20 23:14:01.089775"], ["updated_at", "2021-01-20 23:14:01.089775"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "BigPoppaCode"], ["created_at", "2021-01-20 23:14:01.092296"], ["updated_at", "2021-01-20 23:14:01.092296"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuote Create (1.7ms)[0m  [1m[32mINSERT INTO "quotes" ("text", "created_at", "updated_at", "user_id", "mood") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["text", "Never bend your head. Always hold it high. Look the world straight in the eye. - Helen Keller"], ["created_at", "2021-01-20 23:14:01.134896"], ["updated_at", "2021-01-20 23:14:01.134896"], ["user_id", 1], ["mood", "sad"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuote Create (0.3ms)[0m  [1m[32mINSERT INTO "quotes" ("text", "created_at", "updated_at", "user_id", "mood") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["text", "Life is like riding a bicycle. To keep your balance, you must keep moving. - Albert Einstein"], ["created_at", "2021-01-20 23:14:01.141216"], ["updated_at", "2021-01-20 23:14:01.141216"], ["user_id", 2], ["mood", "lazy"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuote Create (0.2ms)[0m  [1m[32mINSERT INTO "quotes" ("text", "created_at", "updated_at", "user_id", "mood") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["text", "Try to be a rainbow in someone elses cloud. - Maya Angelou"], ["created_at", "2021-01-20 23:14:01.145828"], ["updated_at", "2021-01-20 23:14:01.145828"], ["user_id", 1], ["mood", "sad"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mQuote Create (0.2ms)[0m  [1m[32mINSERT INTO "quotes" ("text", "created_at", "updated_at", "user_id", "mood") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["text", "We often miss opportunity because its dressed in overalls and looks like work - Thomas A. Edison"], ["created_at", "2021-01-20 23:14:01.149670"], ["updated_at", "2021-01-20 23:14:01.149670"], ["user_id", 4], ["mood", "lazy"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuote Create (0.2ms)[0m  [1m[32mINSERT INTO "quotes" ("text", "created_at", "updated_at", "user_id", "mood") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["text", "The heart will break, but broken live on.- Lord Byron"], ["created_at", "2021-01-20 23:14:01.153278"], ["updated_at", "2021-01-20 23:14:01.153278"], ["user_id", 2], ["mood", "heartbroken"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuote Create (0.2ms)[0m  [1m[32mINSERT INTO "quotes" ("text", "created_at", "updated_at", "user_id", "mood") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["text", "Every day may not be good, but there is some good in every day. -Alice Morse Earle"], ["created_at", "2021-01-20 23:14:01.156905"], ["updated_at", "2021-01-20 23:14:01.156905"], ["user_id", 1], ["mood", "sad"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mQuote Create (0.2ms)[0m  [1m[32mINSERT INTO "quotes" ("text", "created_at", "updated_at", "user_id", "mood") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["text", "Ive heard that hard work never killed anyone, but I say why take the chance? - Ronald Reagan"], ["created_at", "2021-01-20 23:14:01.160427"], ["updated_at", "2021-01-20 23:14:01.160427"], ["user_id", 3], ["mood", "lazy"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mQuote Create (0.2ms)[0m  [1m[32mINSERT INTO "quotes" ("text", "created_at", "updated_at", "user_id", "mood") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["text", "Sometimes good things fall apart so better things can fall together. - Marilyn Monroe"], ["created_at", "2021-01-20 23:14:01.163739"], ["updated_at", "2021-01-20 23:14:01.163739"], ["user_id", 4], ["mood", "heartbroken"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mQuote Create (0.3ms)[0m  [1m[32mINSERT INTO "quotes" ("text", "created_at", "updated_at", "user_id", "mood") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["text", "The cure for a broken heart is simple, my lady. A hot bath and a good nights sleep. - Margaret George"], ["created_at", "2021-01-20 23:14:01.169866"], ["updated_at", "2021-01-20 23:14:01.169866"], ["user_id", 1], ["mood", "heartbroken"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mQuote Create (0.3ms)[0m  [1m[32mINSERT INTO "quotes" ("text", "created_at", "updated_at", "user_id", "mood") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["text", "Hardships often prepare ordinary people for an extraordinary destiny. – C.S. Lewis"], ["created_at", "2021-01-20 23:14:01.177409"], ["updated_at", "2021-01-20 23:14:01.177409"], ["user_id", 3], ["mood", "sad"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mQuote Create (0.3ms)[0m  [1m[32mINSERT INTO "quotes" ("text", "created_at", "updated_at", "user_id", "mood") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["text", "As I look back on my life, I realize that every time I thought I was being rejected from something good, I was actually being re-directed to something better. - Dr. Steve Maraboli"], ["created_at", "2021-01-20 23:14:01.186965"], ["updated_at", "2021-01-20 23:14:01.186965"], ["user_id", 2], ["mood", "sad"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/" for ::1 at 2021-01-20 16:15:52 -0700
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by WelcomeController#index as HTML
+Completed 200 OK in 17ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 3541)
+
+
+Started GET "/quotes" for ::1 at 2021-01-20 16:15:58 -0700
+Processing by QuotesController#index as HTML
+  [1m[36mQuote Load (0.6ms)[0m  [1m[34mSELECT "quotes".* FROM "quotes"[0m
+  ↳ app/controllers/quotes_controller.rb:7:in `index'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/quotes_controller.rb:7:in `index'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/quotes_controller.rb:7:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/quotes_controller.rb:7:in `index'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/quotes_controller.rb:7:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/quotes_controller.rb:7:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/quotes_controller.rb:7:in `index'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/quotes_controller.rb:7:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/quotes_controller.rb:7:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/quotes_controller.rb:7:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/quotes_controller.rb:7:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/quotes_controller.rb:7:in `index'
+Completed 200 OK in 66ms (Views: 0.1ms | ActiveRecord: 14.7ms | Allocations: 18562)
+
+
