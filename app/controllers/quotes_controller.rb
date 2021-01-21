@@ -52,6 +52,7 @@ class QuotesController < ApplicationController
     render json: quotes
   end
 
+
   private
   
   def quote_params

@@ -38,6 +38,14 @@ class UsersController < ApplicationController
     @user.destroy
   end
 
+  # SEARCH USER 
+  # localhost:3000/users/searchUser?u=${name}
+  def searchUser
+    user = User.where(name: params[:u])
+    render json: user
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user

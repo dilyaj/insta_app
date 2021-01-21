@@ -901,3 +901,159 @@ Processing by QuotesController#show as HTML
 Completed 200 OK in 70ms (Views: 0.3ms | ActiveRecord: 16.5ms | Allocations: 7990)
 
 
+Started GET "/quotes" for ::1 at 2021-01-20 16:48:48 -0600
+Processing by QuotesController#index as */*
+  Parameters: {"quote"=>{"text"=>"Change begins with a decision: to be overwhelmed or to overcome. - Perry Noble", "mood"=>"overwhelmed"}}
+  [1m[36mQuote Load (2.2ms)[0m  [1m[34mSELECT "quotes".* FROM "quotes"[0m
+  ↳ app/controllers/quotes_controller.rb:7:in `index'
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/quotes_controller.rb:7:in `index'
+  [1m[36mUser Load (4.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/quotes_controller.rb:7:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/quotes_controller.rb:7:in `index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/quotes_controller.rb:7:in `index'
+Completed 200 OK in 232ms (Views: 0.5ms | ActiveRecord: 48.7ms | Allocations: 5803)
+
+
+Started GET "/users/search?u=mekahay" for ::1 at 2021-01-21 14:45:47 -0600
+Processing by UsersController#show as */*
+  Parameters: {"u"=>"mekahay", "id"=>"search"}
+  [1m[36mUser Load (6.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:51:in `set_user'
+Completed 404 Not Found in 198ms (ActiveRecord: 82.0ms | Allocations: 3707)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=search):
+  
+app/controllers/users_controller.rb:51:in `set_user'
+Started GET "/users/search?u=mekahay" for ::1 at 2021-01-21 14:46:02 -0600
+Processing by UsersController#show as */*
+  Parameters: {"u"=>"mekahay", "id"=>"search"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:51:in `set_user'
+Completed 404 Not Found in 110ms (ActiveRecord: 66.7ms | Allocations: 1868)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=search):
+  
+app/controllers/users_controller.rb:51:in `set_user'
+Started GET "/users/search?u=mekahay" for ::1 at 2021-01-21 14:46:20 -0600
+Processing by UsersController#show as */*
+  Parameters: {"u"=>"mekahay", "id"=>"search"}
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 96)
+
+
+Started GET "/quotes/search?q=lazy" for ::1 at 2021-01-21 14:46:50 -0600
+Processing by QuotesController#search as */*
+  Parameters: {"q"=>"lazy"}
+  [1m[36mQuote Load (6.5ms)[0m  [1m[34mSELECT "quotes".* FROM "quotes" WHERE "quotes"."mood" = $1[0m  [["mood", "lazy"]]
+  ↳ app/controllers/quotes_controller.rb:52:in `search'
+Completed 200 OK in 34ms (Views: 4.5ms | ActiveRecord: 10.4ms | Allocations: 1637)
+
+
+Started GET "/quotes/search?q=overwhelmed" for ::1 at 2021-01-21 14:47:00 -0600
+Processing by QuotesController#search as */*
+  Parameters: {"q"=>"overwhelmed"}
+  [1m[36mQuote Load (2.6ms)[0m  [1m[34mSELECT "quotes".* FROM "quotes" WHERE "quotes"."mood" = $1[0m  [["mood", "overwhelmed"]]
+  ↳ app/controllers/quotes_controller.rb:52:in `search'
+Completed 200 OK in 74ms (Views: 62.9ms | ActiveRecord: 9.2ms | Allocations: 3576)
+
+
+Started GET "/users/searchUser?u=mekahay" for ::1 at 2021-01-21 14:47:18 -0600
+Processing by UsersController#show as */*
+  Parameters: {"u"=>"mekahay", "id"=>"searchUser"}
+Completed 200 OK in 0ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 74)
+
+
+Started GET "/quotes/search?q=overwhelmed" for ::1 at 2021-01-21 14:47:52 -0600
+Processing by QuotesController#search as */*
+  Parameters: {"q"=>"overwhelmed"}
+  [1m[36mQuote Load (0.4ms)[0m  [1m[34mSELECT "quotes".* FROM "quotes" WHERE "quotes"."mood" = $1[0m  [["mood", "overwhelmed"]]
+  ↳ app/controllers/quotes_controller.rb:52:in `search'
+Completed 200 OK in 33ms (Views: 12.5ms | ActiveRecord: 11.0ms | Allocations: 4526)
+
+
+Started GET "/users/searchUser?u=mekahay" for ::1 at 2021-01-21 14:47:55 -0600
+Processing by UsersController#show as */*
+  Parameters: {"u"=>"mekahay", "id"=>"searchUser"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:51:in `set_user'
+Completed 404 Not Found in 18ms (ActiveRecord: 8.3ms | Allocations: 1691)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=searchUser):
+  
+app/controllers/users_controller.rb:51:in `set_user'
+Started GET "/users/search?u=mekahay" for ::1 at 2021-01-21 14:48:08 -0600
+Processing by UsersController#show as */*
+  Parameters: {"u"=>"mekahay", "id"=>"search"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:51:in `set_user'
+Completed 404 Not Found in 3ms (ActiveRecord: 0.5ms | Allocations: 508)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=search):
+  
+app/controllers/users_controller.rb:51:in `set_user'
+Started GET "/users/searchUser?u=mekahay" for ::1 at 2021-01-21 14:49:27 -0600
+Processing by UsersController#searchUser as */*
+  Parameters: {"u"=>"mekahay"}
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 3.0ms | Allocations: 2882)
+
+
+  
+NameError (undefined local variable or method `user_id' for #<UsersController:0x007ffeaf84ec60>
+Did you mean?  user):
+  
+app/controllers/users_controller.rb:44:in `searchUser'
+Started GET "/users/searchUser?u=mekahay" for ::1 at 2021-01-21 14:50:24 -0600
+Processing by UsersController#searchUser as */*
+  Parameters: {"u"=>"mekahay"}
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 2.2ms | Allocations: 2856)
+
+
+  
+NameError (undefined local variable or method `quotes' for #<UsersController:0x007ffeae1f8678>
+Did you mean?  quotes_url):
+  
+app/controllers/users_controller.rb:44:in `searchUser'
+Started GET "/users/searchUser?u=mekahay" for ::1 at 2021-01-21 14:51:16 -0600
+Processing by UsersController#searchUser as */*
+  Parameters: {"u"=>"mekahay"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."name" = $1[0m  [["name", "mekahay"]]
+  ↳ app/controllers/users_controller.rb:44:in `searchUser'
+Completed 200 OK in 33ms (Views: 17.6ms | ActiveRecord: 9.3ms | Allocations: 3735)
+
+
+Started GET "/users/searchUser?u=mekahay" for ::1 at 2021-01-21 14:51:43 -0600
+Processing by UsersController#searchUser as */*
+  Parameters: {"u"=>"mekahay"}
+Completed 500 Internal Server Error in 28ms (ActiveRecord: 3.8ms | Allocations: 2816)
+
+
+  
+NameError (undefined local variable or method `id' for #<UsersController:0x007ffeaf0821d0>):
+  
+app/controllers/users_controller.rb:44:in `searchUser'
+Started GET "/users/searchUser?u=mekahay" for ::1 at 2021-01-21 14:51:51 -0600
+Processing by UsersController#searchUser as */*
+  Parameters: {"u"=>"mekahay"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."name" = $1[0m  [["name", "mekahay"]]
+  ↳ app/controllers/users_controller.rb:44:in `searchUser'
+Completed 200 OK in 35ms (Views: 13.0ms | ActiveRecord: 9.8ms | Allocations: 3730)
+
+
+Started GET "/users/searchUser?u=mekahay" for ::1 at 2021-01-21 14:54:31 -0600
+Processing by UsersController#searchUser as */*
+  Parameters: {"u"=>"mekahay"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."name" = $1[0m  [["name", "mekahay"]]
+  ↳ app/controllers/users_controller.rb:44:in `searchUser'
+Completed 200 OK in 23ms (Views: 9.5ms | ActiveRecord: 9.3ms | Allocations: 3733)
+
+
